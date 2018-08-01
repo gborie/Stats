@@ -151,3 +151,40 @@ movers;
 # Heatmap with all the movers sorted by ESI
 plt.figure(figsize=(10, 16))
 sns.heatmap(movers,cmap="RdYlGn",vmin=-20,vmax=20,annot=True);
+
+# Charts for selected country
+# Creating variables
+country = 'ES'
+indu = country + '.INDU'
+serv = country + '.SERV'
+cons = country + '.CONS'
+reta= country + '.RETA'
+buil = country + '.BUIL'
+esi = country + '.ESI'
+
+# df sectors only
+stat = df[[indu,serv,cons,reta,buil]]
+# df with sectors + esi
+stats = df[[indu,serv,cons,reta,buil,esi]]
+stats.tail(2)
+
+# All charts
+stat.plot.line(title=country,figsize=(16,8));
+
+stats[esi].plot.line(title=country+'.ESI',figsize=(16,8));
+plt.axhline(100, color='red', linestyle='--');
+
+stats[indu].plot.line(title=country+'.INDU',figsize=(16,8));
+plt.axhline(0, color='red', linestyle='--');
+
+stats[serv].plot.line(title=country+'.SERV',figsize=(16,8));
+plt.axhline(0, color='red', linestyle='--');
+
+stats[cons].plot.line(title=country+'.CONS',figsize=(16,8));
+plt.axhline(0, color='red', linestyle='--');
+
+stats[reta].plot.line(title=country+'.RETA',figsize=(16,8));
+plt.axhline(0, color='red', linestyle='--');
+
+stats[buil].plot.line(title=country+'.BUIL',figsize=(16,8));
+plt.axhline(0, color='red', linestyle='--');
