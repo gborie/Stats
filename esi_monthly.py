@@ -4,6 +4,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from pandas import DataFrame
 from sklearn.linear_model import LinearRegression as LinReg
 %matplotlib inline
 
@@ -145,3 +147,7 @@ movers['BUIL'] = test['BUIL']
 movers.drop('Luxembourg',inplace=True)
 movers.sort_values(by='ESI',ascending=False,inplace=True)
 movers;
+
+# Heatmap with all the movers sorted by ESI
+plt.figure(figsize=(10, 16))
+sns.heatmap(movers,cmap="RdYlGn",vmin=-20,vmax=20,annot=True);
